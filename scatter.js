@@ -35,7 +35,7 @@ var Brand = "Brand",
 
 
 
-d3.csv("vectors2.csv", function(data) {
+d3.csv("vectors2_1000samples.csv", function(data) {
     console.log("length is:",data.length)
     data.forEach(function(d) {
         // d["URL"]= +d["URL"];
@@ -160,8 +160,8 @@ d3.csv("vectors2.csv", function(data) {
         .attr("y", function (d) { return y(d.YY); } )
         .attr("width",30)
         .attr("height",30)
-        // .attr("xlink:href", function (d) { return ("./pictures_1000samples/"+d["samples_index"]+".jpg");})
-        .attr("xlink:href", function (d) { return ("./pictures2/"+data.indexOf(d).toString()+".jpg");})
+        .attr("xlink:href", function (d) { return ("./pictures_1000samples/"+d["samples_index"]+".jpg");})
+        // .attr("xlink:href", function (d) { return ("./pictures2/"+data.indexOf(d).toString()+".jpg");})
         .on("mouseover.text", tip.show)
         .on("mouseover.cycle",function (d) {d3.select(this).transition()
             .duration(500).attr("width",300).attr("height",300);})
