@@ -81,7 +81,7 @@ d3.csv("vectors.csv", function(data) {
                 + Fuel + ": " + d["Fuel"] + "<br>" + Gearbox + ": " + d["Gear box"] +
                 "<br>" + Averageconsumption + ": " + d["Average consumption"] + " l / 100km"
                 + "<br>" + CO2emissions + ": " + d["CO2 emissions"] + " g / km" + "<br>" + Engine + ": " + d["Engine"]
-                + Power + ": " + d["Power"] + " ch"
+                + "<br>" + Power + ": " + d["Power"] + " ch"
                 + "<br>" + Category + ": " + d["Category"] + "<br>" + Fiscalpower + ": " + d["Fiscal power"]
                 + "<br>" + Numberofdoors + ": " + d["Number of doors"] + "<br>" + Price + ": " + d["Price"] + " " + "€" + "TTC/mois*";
         });
