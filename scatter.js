@@ -23,6 +23,7 @@ var yAxis = d3.svg.axis()
     .tickSize(-width);
 
 var Brand = "Brand",
+    Model = "Model",
     Fuel = "Fuel",
     Gearbox = "Gear box",
     Averageconsumption = "Average consumption",
@@ -30,12 +31,13 @@ var Brand = "Brand",
     Engine = "Engine",
     Category = "Category",
     Fiscalpower = "Fiscal power",
+    Power = "Power",
     Numberofdoors = "Number of doors",
     Price = "Price";
 
 
 
-d3.csv("vectors2_1000samples.csv", function(data) {
+d3.csv("vectors.csv", function(data) {
     console.log("length is:",data.length)
     data.forEach(function(d) {
         // d["URL"]= +d["URL"];
@@ -49,8 +51,7 @@ d3.csv("vectors2_1000samples.csv", function(data) {
         d["Fiscal power"] = +d["Fiscal power"];
         d["Number of doors"] = +d["Number of doors"];
         d["Price"] = +d["Price"];
-        d["Imglabel"] = +d["Imglabel"];
-        d["samples_index"] = +d["samples_index"];
+        d["Power"] = +d["Power"]
 
     });
 
@@ -74,9 +75,13 @@ d3.csv("vectors2_1000samples.csv", function(data) {
         .attr("class", "d3-tip")
         .offset([-10, 0])
         .html(function(d) {
-            return Brand + ": " + d.Brand + "<br>" + Fuel + ": " + d["Fuel"] + "<br>" + Gearbox + ": " + d["Gear box"] +
-                "<br>" + Averageconsumption + ": " + d["Average consumption"] + "<br>" + CO2emissions + ": " + d["CO2 emissions"] + "<br>" + Engine + ": " + d["Engine"]
-                + "<br>" + Category + ": " + d["Category"] + "<br>" + Fiscalpower + ": " + d["Fiscal power"] + "<br>" + Numberofdoors + ": " + d["Number of doors"] + "<br>" + Price + ": " + d["Price"];
+            return Brand + ": " + d.Brand  + "<br>" + Model + ": " + d["Model"] + "<br>"
+                + Fuel + ": " + d["Fuel"] + "<br>" + Gearbox + ": " + d["Gear box"] +
+                "<br>" + Averageconsumption + ": " + d["Average consumption"] + " l / 100km"
+                + "<br>" + CO2emissions + ": " + d["CO2 emissions"] + " g / km" + "<br>" + Engine + ": " + d["Engine"]
+                + Power + ": " + d["Power"] + " ch"
+                + "<br>" + Category + ": " + d["Category"] + "<br>" + Fiscalpower + ": " + d["Fiscal power"]
+                + "<br>" + Numberofdoors + ": " + d["Number of doors"] + "<br>" + Price + ": " + d["Price"] + " " + "€" + "TTC/mois*";
         });
 
 
@@ -160,8 +165,8 @@ d3.csv("vectors2_1000samples.csv", function(data) {
         .attr("y", function (d) { return y(d.YY); } )
         .attr("width",30)
         .attr("height",30)
-        .attr("xlink:href", function (d) { return ("./pictures_1000samples/"+d["samples_index"]+".jpg");})
-        // .attr("xlink:href", function (d) { return ("./pictures2/"+data.indexOf(d).toString()+".jpg");})
+        // .attr("xlink:href", function (d) { return ("./pictures_1000samples/"+d["Imglabel"]+".jpg");})
+        .attr("xlink:href", function (d) { return ("./pictures/"+data.indexOf(d).toString()+".jpg");})
         .on("mouseover.text", tip.show)
         .on("mouseover.cycle",function (d) {d3.select(this).transition()
             .duration(500).attr("width",300).attr("height",300);})
