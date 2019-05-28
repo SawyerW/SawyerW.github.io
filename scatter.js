@@ -33,6 +33,7 @@ var Brand = "Brand",
     Fiscalpower = "Fiscal power",
     Power = "Power",
     Numberofdoors = "Number of doors",
+    Index = 'Index',
     Price = "Price";
 
 
@@ -51,7 +52,8 @@ d3.csv("vectors.csv", function(data) {
         d["Fiscal power"] = +d["Fiscal power"];
         d["Number of doors"] = +d["Number of doors"];
         d["Price"] = +d["Price"];
-        d["Power"] = +d["Power"]
+        d["Power"] = +d["Power"];
+        d["Index"] = +d["Index"];
 
     });
 
@@ -165,8 +167,8 @@ d3.csv("vectors.csv", function(data) {
         .attr("y", function (d) { return y(d.YY); } )
         .attr("width",30)
         .attr("height",30)
-        // .attr("xlink:href", function (d) { return ("./pictures_1000samples/"+d["Imglabel"]+".jpg");})
-        .attr("xlink:href", function (d) { return ("./pictures/"+data.indexOf(d).toString()+".jpg");})
+        .attr("xlink:href", function (d) { return ("./pictures/"+d["Index"]+".jpg");})
+        // .attr("xlink:href", function (d) { return ("./pictures/"+data.indexOf(d).toString()+".jpg");})
         .on("mouseover.text", tip.show)
         .on("mouseover.cycle",function (d) {d3.select(this).transition()
             .duration(500).attr("width",300).attr("height",300);})
